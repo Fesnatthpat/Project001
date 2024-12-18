@@ -16,22 +16,6 @@ export default defineNuxtConfig({
     }
   },
 
-  nitro: {
-    output: {
-      publicDir: './.output/public'
-      // routes: ['/uploads/']
-    }
-  },
-
-//   nitro: {
-//     publicAssets: [
-//         {
-//             dir: 'public',
-//             baseURL: '/uploads', // เส้นทาง URL สำหรับไฟล์ static
-//         },
-//     ],
-// },
-
   compatibilityDate: '2024-11-01',
   devtools: { enabled: true }
 })
