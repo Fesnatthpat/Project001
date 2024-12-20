@@ -26,7 +26,7 @@ export default defineEventHandler(async (event) => {
         if (image.data.length > 5 * 1024 * 1024)
             throw createError({ statusCode: 400, message: "File too large" })
 
-        const uploadsDir = path.join(process.cwd(), "public/uploads")
+        const uploadsDir = path.join(process.cwd(), "public/storage/uploads")
         await fs.mkdir(uploadsDir, { recursive: true })
 
         //สร้างชื่อไฟล์ใหม่ด้วย UUIDV4
@@ -38,7 +38,7 @@ export default defineEventHandler(async (event) => {
             data: {
                 title,
                 content,
-                imageUrl: `/uploads/${path.basename(filePath)}`
+                imageUrl: `storage/uploads/${path.basename(filePath)}`
             }
         })
 

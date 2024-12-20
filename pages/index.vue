@@ -1,7 +1,20 @@
 <script setup lang="ts">
+import { type Post } from '~~/types/post';
 
+// const { data: posts, error } = await useAPI().getAllPosts()
 
+const posts = ref<Post[]>([]);
 
+// Fetch posts on component mount
+const fetchPosts = async () => {
+    try {
+        posts.value = await $fetch<Post[]>('/api/posts');
+    } catch (error) {
+        console.error('Error fetching posts:', error);
+    }
+}
+
+await fetchPosts()
 
 useHead({
   title: 'Home',
@@ -20,7 +33,6 @@ useHead({
       <div class="">
         <!-- <NuxtLink to="/service" class="btn-hero"></NuxtLimk> -->
         <NuxtLink to="/service" class="btn-hero">Go to Service</NuxtLink>
-
       </div>
     </div>
   </div>
@@ -29,7 +41,17 @@ useHead({
 
   <!-- Box Show Post -->
   <div class="container mx-auto">
-
+    <div class="container mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 p-5">
+      <div v-for="post in posts" :key="post.id" class="card border p-5">
+        <h3>{{ post.title }}</h3>
+        <p>{{ post.content }}</p>
+        <img :src="post.imageUrl" alt="Post Image" class="w-full h-48 object-cover" />
+        <div class="flex justify-between mt-2">
+          <!-- <button @click="openEditModal(post)" class="btn btn-warning">Edit</button>
+          <button @click="deletePost(post.id)" class="btn btn-danger">Delete</button> -->
+        </div>
+      </div>
+    </div>
   </div>
 
   <!-- BoxGrid-1 -->
