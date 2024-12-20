@@ -1,5 +1,12 @@
 {
-    "builds": [
+    "rewrites": [
+        {
+            "source": "/(.*)",
+            "destination": "/"
+        }
+    ],
+
+        "builds": [
         {
             "src": "nuxt.config.js",
             "use": "@vercel/node"
