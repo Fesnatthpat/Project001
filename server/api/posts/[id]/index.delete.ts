@@ -29,7 +29,7 @@ export default defineEventHandler(async (event) => {
     // 2. ลบรูปภาพออกจากโฟลเดอร์ public/uploads
     const imagePath = post.imageUrl
     if (imagePath) {
-        const fullPath = join('/uploads', imagePath.split('/').pop() || '')
+        const fullPath = join('public/uploads', imagePath.split('/').pop() || '')
         try {
             await fs.unlink(fullPath)
         } catch (error) {

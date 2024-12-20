@@ -27,6 +27,8 @@ export default defineNuxtConfig({
     baseURL: '/', // ตรวจสอบว่า baseURL ถูกต้อง
   },
 
+  
+
 
 
   compatibilityDate: '2024-11-01',
